@@ -12,6 +12,6 @@ describe ImageEditor::ShowCommand do
       ImageEditor::ShowCommand.run({})
     end
 
-    output.should == image.to_s
+    output.should == image.to_s + "\n"
   end
 end
