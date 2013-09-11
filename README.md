@@ -1,6 +1,6 @@
 # ImageEditor
 
-TODO: Write a gem description
+Simple CLI Image Editor Simulator
 
 ## Installation
 
