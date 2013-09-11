@@ -10,9 +10,9 @@ module ImageEditor
       [/^V\s+(?<x>\d+)\s+(?<y1>\d+)\s+(?<y2>\d+)\s+(?<color>[A-Z])\s*$/, VerticalDrawCommand],
       [/^H\s+(?<x1>\d+)\s+(?<x2>\d+)\s+(?<y>\d+)\s+(?<color>[A-Z])\s*$/, HorizontalDrawCommand],
       [/^F\s+(?<x>\d+)\s+(?<y>\d+)\s+(?<color>[A-Z])\s*$/, FillRegionCommand],
-      [/C/, ClearImageCommand],
-      [/X/, TerminateCommand],
-      [/S/, ShowCommand]
+      [/^C$/, ClearImageCommand],
+      [/^X$/, TerminateCommand],
+      [/^S$/, ShowCommand]
     ]
 
     def recognize(string)
@@ -21,7 +21,7 @@ module ImageEditor
         match_data = string.match pattern
       end
 
-      raise ImageEditor::UnknownCommand.new(string) if result.nil?
+      raise ImageEditor::UnknownCommand.new("Unkown Command: #{string}") if result.nil?
 
       run_command(result[1], match_data)
     end

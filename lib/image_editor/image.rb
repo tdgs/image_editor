@@ -86,7 +86,7 @@ module ImageEditor
 
     private
     def check_coords(x,y)
-      raise OutOfBoundsError.new("x, y") if is_out_of_bounds(x,y)
+      raise OutOfBoundsError.new("Out of Bounds: #{x}, #{y}") if is_out_of_bounds(x,y)
     end
 
 
