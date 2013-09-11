@@ -8,6 +8,12 @@ describe ImageEditor::Image do
     it "creates a new 2d table" do
       image.data.should == [["O","O"], ["O", "O"], ["O", "O"]]
     end
+
+    it "raises an Error with a big size" do
+      expect {
+        ImageEditor::Image.new(259, 400)
+      }.to raise_error(ImageEditor::ImageSizeBadError)
+    end
   end
 
   describe "complete test" do

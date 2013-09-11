@@ -2,10 +2,16 @@ module ImageEditor
 
   class OutOfBoundsError < StandardError; end
   class ArgumentError < StandardError; end
+  class ImageSizeBadError < StandardError; end
+
   class Image
     attr_accessor :data
 
     def initialize(x, y)
+      if x < 1 || y < 1 || x > 250 || y > 250
+        raise ImageEditor::ImageSizeBadError.new("Image Size should be in [1,250]")
+      end
+
       @x = x
       @y = y
       @data = Array.new(y) { Array.new(x) {"O"} }
