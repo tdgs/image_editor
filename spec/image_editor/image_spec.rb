@@ -38,6 +38,31 @@ describe ImageEditor::Image do
     end
   end
 
+  describe "to_s" do
+    let(:image) {ImageEditor::Image.new(2, 3)}
+
+    it "prints the table" do
+      image.data = [
+        ["J", "J", "J", "J", "J"],
+        ["J", "J", "Z", "Z", "J"],
+        ["J", "W", "J", "J", "J"],
+        ["J", "W", "J", "J", "J"],
+        ["J", "J", "J", "J", "J"],
+        ["J", "J", "J", "J", "J"],
+      ]
+
+
+      expected = "J J J J J\n" +
+                 "J J Z Z J\n" +
+                 "J W J J J\n" +
+                 "J W J J J\n" +
+                 "J J J J J\n" +
+                 "J J J J J"
+
+      image.to_s.should == expected
+    end
+  end
+
   describe "data access" do
     let(:image) {ImageEditor::Image.new(5, 6)}
 
