@@ -3,6 +3,7 @@ module ImageEditor
     extend self
 
     def run(opts)
+      ImageEditor.image.clear
     end
   end
 end
